@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ fragment_start_new_challenge
+  ~
+  ~ Created by Berthold Fritz
+  ~
+  ~ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License:
+  ~ https://creativecommons.org/licenses/by-nc-sa/4.0/
+  ~
+  ~ Last modified 3/28/18 9:19 PM
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/challenge_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/challenge_name"
+            android:inputType="textCapWords"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/challenge_new_goal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/challenge_goal"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ok_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ok_button" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_button" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ fragment_spend_money.xmly.xml
+  ~
+  ~ Created by Berthold Fritz
+  ~
+  ~ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License:
+  ~ https://creativecommons.org/licenses/by-nc-sa/4.0/
+  ~
+  ~ Last modified 3/28/18 9:19 PM
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/amount_of_money_spend_hint"
+            android:inputType="numberDecimal"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/spend_for"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/category_money_spend_for"
+            android:inputType="textCapWords" />
+
+        <!-- List of common products -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/selected_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_coffee">
+                    </RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/selected_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_breakfeast"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/selected_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_lunch"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/selected_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_diner"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/selected_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_ticket"></RadioButton>
+
+
+                    <RadioButton
+                        android:id="@+id/selected_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_hobby"></RadioButton>
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ok_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ok_button" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_button" />
+    </LinearLayout>
+</LinearLayout>

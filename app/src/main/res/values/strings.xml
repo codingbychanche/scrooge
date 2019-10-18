@@ -1,0 +1,59 @@
+<!--
+  ~ strings.xml
+  ~
+  ~ Created by Berthold Fritz
+  ~
+  ~ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License:
+  ~ https://creativecommons.org/licenses/by-nc-sa/4.0/
+  ~
+  ~ Last modified 9/30/19 1:55 PM
+  -->
+
+<resources>
+    <!-- Main -->
+    <string name="app_name">Scrooge</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="status_text">Aktueller Tagesstatus</string>
+    <string name="active_chalenge_name">Aktive Herausforderung</string>
+    <string name="money_spend_today">Tagesausgaben</string>
+    <string name="money_left_today">Verbleibends Tages Budget</string>
+    <string name="add_carry">Übertrag Vortag</string>
+    <string name="challenges_table_name">Abgeschlossene:</string>
+    <string name="expenses_of_today">Heute gekauft....</string>
+
+    <string name="leave_warning">Die App wird verlassen, wenn Sie den Back- Button ein zweites mal drücken.
+                                Der aktuelle Stand wird gespeichrt!</string>
+
+    <!-- Spend Money fragment -->
+    <string name="titel">Ausgaben</string>
+    <string name="ok_button">Ok</string>
+    <string name="cancel_button">Abbrechen</string>
+
+    <!-- New Challenge fragment -->
+    <string name="challenge_name">Name der Challenge?</string>
+    <string name="challenge_goal">Maximale Summe/ Tag?</string>
+
+    <!-- Dialog Fragment, shown when user enters amount of money spend and additional info -->
+    <string name="amount_of_money_spend_hint">€</string>
+    <string name="category_money_spend_for">Für was?</string>
+
+    <!-- List of goods to choose from -->
+    <string name="radio_coffee">Kaffee..</string>
+    <string name="radio_breakfeast">Frühstück..</string>
+    <string name="radio_lunch">Mittagessen..</string>
+    <string name="radio_diner">Abendessen..</string>
+    <string name="radio_ticket">ÖPNV....</string>
+    <string name="radio_hobby">Hobby...</string>
+
+    <!-- List and evaluate challenges -->
+    <string name="title_list_and_eval_challenges">Übersicht abgeschlossene Herausforderungen</string>
+
+    <!-- Challenges row view -->
+
+    <string name="date_started">Angefangen:</string>
+    <string name="date_ended">Beendet:</string>
+    <string name="goal">Tageslimit</string>
+    <string name="ending_balance">Abschluss</string>
+
+</resources>

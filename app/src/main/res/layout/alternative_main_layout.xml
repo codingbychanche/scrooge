@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ alternative_main_layout.xml
+  ~
+  ~ Created by Berthold Fritz
+  ~
+  ~ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License:
+  ~ https://creativecommons.org/licenses/by-nc-sa/4.0/
+  ~
+  ~ Last modified 10/4/19 7:03 PM
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/background_gradient"
+        app:layout_constraintBottom_toBottomOf="@+id/active_challenge_goal_field">
+
+    </View>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_gradient"
+        app:layout_constraintTop_toBottomOf="@+id/money_left_today_field"
+        tools:layout_editor_absoluteX="16dp">
+
+    </View>
+
+    <TextView
+        android:id="@+id/active_challenge_name_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:paddingBottom="10dp"
+        android:textColor="#05FF76"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/active_challenge_goal_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:paddingBottom="10dp"
+        android:textColor="#05FF76"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/active_challenge_name_field">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/date_of_active_challenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:textColor="#05FF76"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:text="@string/money_spend_today"
+        app:layout_constraintStart_toStartOf="@+id/active_challenge_goal_field"
+        app:layout_constraintTop_toBottomOf="@+id/active_challenge_goal_field"></TextView>
+
+    <TextView
+        android:id="@+id/money_spend_today_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/add_carry"
+        app:layout_constraintStart_toStartOf="@+id/money_spend_today_field"
+        app:layout_constraintTop_toBottomOf="@+id/money_spend_today_field">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/add_carry_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/money_left_today"
+        app:layout_constraintStart_toStartOf="@+id/add_carry_field"
+        app:layout_constraintTop_toBottomOf="@+id/add_carry_field">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/money_left_today_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/money_spend_today"
+        android:textColor="#84EE07"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view2">
+
+    </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/expenses_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight=".5"
+        android:paddingTop="10dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:src="@android:drawable/ic_menu_agenda"
+        app:backgroundTint="#C2DDD9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/active_challenge_goal_field">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/spend_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:src="@android:drawable/ic_menu_add"
+        app:backgroundTint="#C2DDD9"
+        app:layout_constraintEnd_toStartOf="@+id/fab"
+        app:layout_constraintTop_toBottomOf="@+id/fab"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/close_cahllenge_start_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@android:drawable/ic_menu_save"
+        app:backgroundTint="#C2DDD9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spend_money">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
