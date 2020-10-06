@@ -18,16 +18,17 @@ package berthold.scrooge;
 public class UtilFormatTimeStamp {
 
     public static final Boolean WITH_TIME = true;
+    public static final Boolean WITHOUT_TIME = false;
 
     /**
-     * Common german formatting
+     * Common fromH2DataBaseTogermanDateFormat formatting
      *
      * @param timestamp String containing H2- timestamp: YYYY-MM-DD HH:mm.ss
      * @param TIME      If true, time is appended
      * @return Formated Date and time.
      */
 
-    public static String german(String timestamp, Boolean TIME) {
+    public static String fromH2DataBaseTogermanDateFormat(String timestamp, Boolean TIME) {
         String formated;
 
         // After this:
@@ -57,6 +58,27 @@ public class UtilFormatTimeStamp {
             formated = "Could not convert";
         }
 
+        return formated;
+    }
+
+    /**
+     * Converts simple date format to german date
+     */
+    public static String fromSimpleDateFormatToGerman(String timestamp) {
+
+        String formated;
+
+        try {
+            String dateparts[] = timestamp.split("-");
+            String year = dateparts[0];
+            String month = dateparts[1];
+            String day = dateparts[2];
+
+            formated = day + "." + month + "." + year;
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            formated = "Could not convert";
+        }
         return formated;
     }
 }

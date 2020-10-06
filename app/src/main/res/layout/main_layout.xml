@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ main_layout Created by Berthold Fritz
+  ~
+  ~ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License:
+  ~ https://creativecommons.org/licenses/by-nc-sa/4.0/
+  ~
+  ~ Last modified 10/4/19 7:03 PM
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#94BBB7">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/background_gradient"
+        app:layout_constraintBottom_toBottomOf="@+id/active_challenge_goal_field"
+        tools:layout_editor_absoluteX="0dp">
+
+    </View>
+
+    <TextView
+        android:id="@+id/challenge_days_running"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:hint="Days"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/active_challenge_name_field"
+        app:layout_constraintEnd_toStartOf="@+id/date_of_active_challenge"
+        app:layout_constraintTop_toTopOf="@+id/active_challenge_name_field"></TextView>
+
+    <TextView
+        android:id="@+id/active_challenge_name_field"
+        style="@style/ActivityTitelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <TextView
+        android:id="@+id/active_challenge_goal_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="Goal"
+        android:paddingBottom="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/active_challenge_name_field">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/date_of_active_challenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:hint="Date"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/challenge_days_running"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/challenge_days_running">
+
+    </TextView>
+
+    <!-- Day -->
+
+    <TextView
+        android:id="@+id/textView51"
+        style="@style/ActivityTextBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/balance_over_whole_challenge"
+        app:layout_constraintStart_toStartOf="@+id/money_left_today_field"
+        app:layout_constraintTop_toBottomOf="@+id/money_left_today_field"></TextView>
+
+    <TextView
+        android:id="@+id/money_left_today_field"
+        style="@style/ActivityHighlightedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:hint="TargetSum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView51"></TextView>
+
+
+    <TextView
+        android:id="@+id/actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="ActualSum"
+        app:layout_constraintEnd_toEndOf="@+id/target"
+        app:layout_constraintTop_toBottomOf="@+id/target"></TextView>
+
+    <TextView
+        android:id="@+id/balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Balance"
+        app:layout_constraintEnd_toEndOf="@+id/actual"
+        app:layout_constraintTop_toBottomOf="@+id/actual"></TextView>
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/ActivityTextBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/money_spend_today"
+        app:layout_constraintStart_toStartOf="@+id/active_challenge_goal_field"
+        app:layout_constraintTop_toBottomOf="@+id/active_challenge_goal_field"></TextView>
+
+    <TextView
+        android:id="@+id/money_spend_today_field"
+        style="@style/ActivityHighlightedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/ActivityTextBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/add_carry"
+        app:layout_constraintStart_toStartOf="@+id/money_spend_today_field"
+        app:layout_constraintTop_toBottomOf="@+id/money_spend_today_field">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/add_carry_field"
+        style="@style/ActivityHighlightedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/ActivityTextBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/money_left_today"
+        app:layout_constraintStart_toStartOf="@+id/add_carry_field"
+        app:layout_constraintTop_toBottomOf="@+id/add_carry_field">
+
+    </TextView>
+
+    <!-- Whole challenge -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/expenses_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight=".5"
+        android:paddingTop="10dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balance">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fold_unfold_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:scaleX=".7"
+        android:scaleY=".7"
+        android:src="@android:drawable/ic_menu_more"
+        app:backgroundTint="#015F56"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/active_challenge_goal_field"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/list_all_closed_challenges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@android:drawable/ic_menu_agenda"
+        app:backgroundTint="#015F56"
+        app:layout_constraintBottom_toTopOf="@+id/fold_unfold_menu"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/spend_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:src="@android:drawable/ic_menu_add"
+        app:backgroundTint="#015F56"
+        app:layout_constraintBottom_toTopOf="@+id/close_cahllenge_start_new"
+        app:layout_constraintEnd_toStartOf="@+id/fold_unfold_menu"
+        app:layout_constraintTop_toBottomOf="@+id/list_all_closed_challenges"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/close_cahllenge_start_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@android:drawable/ic_menu_save"
+        app:backgroundTint="#015F56"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fold_unfold_menu">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+    <!--
+    <com.anychart.AnyChartView
+        android:id="@+id/any_chart_waterfall"
+        android:layout_width="match_parent"
+
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/money_left_today_field">
+
+    </com.anychart.AnyChartView>
+    -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

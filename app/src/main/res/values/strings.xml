@@ -18,6 +18,7 @@
     <string name="active_chalenge_name">Aktive Herausforderung</string>
     <string name="money_spend_today">Tagesausgaben</string>
     <string name="money_left_today">Verbleibends Tages Budget</string>
+    <string name="balance_over_whole_challenge">Gesammte challenge....</string>
     <string name="add_carry">Übertrag Vortag</string>
     <string name="challenges_table_name">Abgeschlossene:</string>
     <string name="expenses_of_today">Heute gekauft....</string>
@@ -26,34 +27,37 @@
                                 Der aktuelle Stand wird gespeichrt!</string>
 
     <!-- Spend Money fragment -->
-    <string name="titel">Ausgaben</string>
+    <string name="new_expense_fragment_titel">Ausgaben</string>
+    <string name="new_expense_fragment_explain">Geben Sie bitte den Betrag ein, den Sie ausgegeben haben. Wählen Sie dann entweder aus der
+    Liste ein Produkt oder, wenn es dort nicht enthalten ist, geben Sie einen beliebigen Text dafür ein.</string>
     <string name="ok_button">Ok</string>
     <string name="cancel_button">Abbrechen</string>
 
     <!-- New Challenge fragment -->
+    <string name="new_challenge_fragment_titel">Neue Herausforderung</string>
     <string name="challenge_name">Name der Challenge?</string>
     <string name="challenge_goal">Maximale Summe/ Tag?</string>
+    <string name="start_new_challenge_explain">Tragen Sie hier den Namen und das Ziel der neuen Herausforderung ein.
+    Wenn Sie diesen Dialog bestätigen, wird die aktuelle Herausforderung gespeichert.</string>
 
     <!-- Dialog Fragment, shown when user enters amount of money spend and additional info -->
     <string name="amount_of_money_spend_hint">€</string>
     <string name="category_money_spend_for">Für was?</string>
 
-    <!-- List of goods to choose from -->
-    <string name="radio_coffee">Kaffee..</string>
-    <string name="radio_breakfeast">Frühstück..</string>
-    <string name="radio_lunch">Mittagessen..</string>
-    <string name="radio_diner">Abendessen..</string>
-    <string name="radio_ticket">ÖPNV....</string>
-    <string name="radio_hobby">Hobby...</string>
-
     <!-- List and evaluate challenges -->
     <string name="title_list_and_eval_challenges">Übersicht abgeschlossene Herausforderungen</string>
+    <string name="dialog_delete_challenges">Möchten Sie diese Herausforderung wirklich löschne? Wenn Sie das machen, dann werden auch alle dafür regestrierten Ausgaben gelöscht.</string>
+    <string name="dialog_yes_button">Nein</string>
+    <string name="dialog_no_button">Löschen!</string>
+    <string name="challenges_delete_dialog">Herausforderung Löschen?</string>
 
     <!-- Challenges row view -->
-
     <string name="date_started">Angefangen:</string>
     <string name="date_ended">Beendet:</string>
     <string name="goal">Tageslimit</string>
     <string name="ending_balance">Abschluss</string>
+
+    <!-- Challenges Info -->
+    <string name="activity_challenge_info_total_text">Insgesammt ausgegeben:</string>
 
 </resources>

@@ -9,61 +9,49 @@
   ~ Last modified 10/6/19 10:00 PM
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/date_of_expense"
+        style="@style/TableRowsTextBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
 
-        <ImageButton
-            android:id="@+id/info_about_challenge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_view"></ImageButton>
+    <TextView
+        android:id="@+id/amount_of_money_spend"
+        style="@style/TableRowsTitel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/date_of_expense"
+        app:layout_constraintTop_toBottomOf="@+id/date_of_expense"></TextView>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingLeft="10dp">
+    <TextView
+        android:id="@+id/money_spend_for"
+        style="@style/TableRowsTextBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/amount_of_money_spend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/amount_of_money_spend"></TextView>
 
-            <TextView
-                android:id="@+id/date_of_expense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="10dp"></TextView>
-
-            <TextView
-                android:id="@+id/amount_of_money_spend"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"></TextView>
-
-            <TextView
-                android:id="@+id/money_spend_for"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="10dp"></TextView>
-
-
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorPrimary">
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/money_spend_for"
+        tools:layout_editor_absoluteX="0dp"></View>
 
-    </View>
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

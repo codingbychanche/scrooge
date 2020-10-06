@@ -21,12 +21,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
+import android.widget.ListView;
 
 public class FragmentSpendMoney extends DialogFragment {
 
@@ -88,6 +87,18 @@ public class FragmentSpendMoney extends DialogFragment {
         moneySpendFor = (EditText) view.findViewById(R.id.spend_for);
 
 
+        // Fill product list
+        ListView itemListView = (ListView) view.findViewById(R.id.product_list);
+        final String[] values = DBList.products();
+
+        ArrayAdapter<String> itemListAdapter =
+                new ArrayAdapter<String>(getActivity(), R.layout.simple_list_row, R.id.text1, values);
+        itemListView.setAdapter(itemListAdapter);
+
+        /*
+         * @rem:RadioButtonGroup, selectable list of items...@@
+         * Nice piece of code, showing how to handle a Radio- Button Group like a list of items
+         * which can be selected. Name of the Item (text displayed) is returned as an value.
         // Inner Class contains callback method which will be executed, when
         // a checkbox was changed.
         CompoundButton.OnCheckedChangeListener myOnCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
@@ -97,7 +108,7 @@ public class FragmentSpendMoney extends DialogFragment {
                 // Insert associated text- string into editText....
                 // @rem:Shows how one can get compoundButtons associated text- string@@
 
-                // Funny: If ou do not check if b id true, string is from the last
+                // Funny: If ou do not check if b is true, string is from the last
                 // selected button, but not from the actual
                 if (b)
                     moneySpendFor.setText(compoundButton.getText());
@@ -109,7 +120,7 @@ public class FragmentSpendMoney extends DialogFragment {
         // Name convention in XML: 'selcted_#' where '#' is the consecutive number of the checkbox
         int tag = 0; // Consecutive number of checkbox
 
-        for (int i = 1; i <= 6; i++) { // # of checkboxes per area
+        for (int i = 1; i <= 5; i++) { // # of checkboxes per area
             int id = getResources().getIdentifier("selected_" + i, "id", getActivity().getPackageName());
 
             RadioButton rb = (RadioButton) view.findViewById(id);
@@ -119,7 +130,17 @@ public class FragmentSpendMoney extends DialogFragment {
             rb.setOnCheckedChangeListener(myOnCheckedChangeListener);
             Log.v("LIST ", "" + id);
         }
+        */
 
+        // When item inside list was pressed...
+        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                Log.v("FRAGMENT_ITEM", "" + position);
+                moneySpendFor.setText(values[position]);
+            }
+        };
+        itemListView.setOnItemClickListener(listener);
 
         // When Ok Button is pressed, finish fragment and return text....
         okButton = (Button) view.findViewById(R.id.ok_button);
@@ -131,6 +152,10 @@ public class FragmentSpendMoney extends DialogFragment {
                 // to the activity which started this fragment.
                 //
                 // The caling activity must implement this fragments interface!
+
+
+                DBInsertInto.products(moneySpendFor.getText().toString());
+
 
                 gf.expensesGetDataFromFragment(moneySpend.getText().toString(), moneySpendFor.getText().toString(), "OK");
                 dismiss();
@@ -146,5 +171,22 @@ public class FragmentSpendMoney extends DialogFragment {
                 dismiss();
             }
         });
+    }
+
+    /**
+     * Fills the list with data
+     * <p>
+     * todo Replace by database query!
+     */
+    private String[] getValues() {
+
+        String[] values = new String[]{"Berthold",
+                "Donald",
+                "Fuck",
+                "Another Fuck",
+                "Shit",
+                "Damit",
+                "End"};
+        return values;
     }
 }

@@ -72,7 +72,7 @@ public class ExpensesListAdapter extends RecyclerView.Adapter<ExpensesListAdapte
         TextView amountOfMoneySpend = (TextView) holder.mView.findViewById(R.id.amount_of_money_spend);
         TextView moneySpendFor = (TextView) holder.mView.findViewById(R.id.money_spend_for);
 
-        thisExpenseWasSelected = (ImageButton) holder.mView.findViewById(R.id.info_about_challenge);
+        //thisExpenseWasSelected = (ImageButton) holder.mView.findViewById(R.id.info_about_challenge);
 
         // Show data
         String date = expensesList.get(position).getDate();
@@ -81,26 +81,18 @@ public class ExpensesListAdapter extends RecyclerView.Adapter<ExpensesListAdapte
 
         float amountSpend = expensesList.get(position).getAmountOfMoneySpend();
         String amountSpendFormated = String.format(floatNumberFormatPreset, amountSpend);
-        amountOfMoneySpend.setText(Float.valueOf(amountSpendFormated) + " €");
+        amountOfMoneySpend.setText(amountSpendFormated + " €");
 
         String spendFor = expensesList.get(position).getMoneySpendFor();
         moneySpendFor.setText(spendFor);
 
         // Listen to click events
         // Delete row?
+        /*
         thisExpenseWasSelected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 main.expensesListItemInsideWasTouched(position, thisExpenseWasSelected.getId());
-            }
-        });
-        /*
-        includeThisLoadIntoCalculation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean includehisLoadIntoCalculation) {
-                Log.v("Checked:"," Include checked for item "+includehisLoadIntoCalculation);
-                loadList.get(position).setIncludeIntoCalculation(includehisLoadIntoCalculation);
-                main.itemInsideLoadListWasPressed(position,includeThisLoadIntoCalculation.getId());
             }
         });
         */

@@ -25,17 +25,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdapter.MyViewHolder> {
-    private List<ChallengeData> challengeList=new ArrayList<>();
+    private List<ChallengeData> challengeList = new ArrayList<>();
     private ActivityListAndEvalChallenges listAndEvalChallenges;
 
+    // Number format
+    private static String floatNumberFormatPreset = "%.2f";
+
     // Ui
-    private ImageButton thisChallengeWasSelected;
+    private ImageButton thisChallengeDeleteView, thisChallengeShowInfo;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public ChallengeListAdapter(List<ChallengeData> challengeList, ActivityListAndEvalChallenges listAndEvalChallenges) {
-        this.challengeList=challengeList;
-        this.listAndEvalChallenges=listAndEvalChallenges;
-        Log.v("Adapter:","OK");
+        this.challengeList = challengeList;
+        this.listAndEvalChallenges = listAndEvalChallenges;
+        Log.v("Adapter:", "OK");
     }
 
     // Provide a reference to the views for each data item
@@ -44,10 +47,11 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public View mView;
+
         public MyViewHolder(View v) {
             super(v);
-            Log.v("Constructor","-");
-            mView= v;
+            Log.v("Constructor", "-");
+            mView = v;
         }
     }
 
@@ -57,7 +61,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.challenges_row_view, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
-        Log.v("onCreateViewHolder","-");
+        Log.v("onCreateViewHolder", "-");
         return vh;
     }
 
@@ -66,60 +70,68 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        TextView challengeName=(TextView)holder.mView.findViewById(R.id.challenge_name);
-        TextView dateStarted=(TextView) holder.mView.findViewById(R.id.date_started);
-        TextView dateEndetView=(TextView)holder.mView.findViewById(R.id.date_ended);
-        TextView goalView=(TextView)holder.mView.findViewById(R.id.goal);
-        TextView endingBalanceView=(TextView)holder.mView.findViewById(R.id.ending_balance);
+        final TextView challengeName = (TextView) holder.mView.findViewById(R.id.challenge_name);
+        TextView dateStarted = (TextView) holder.mView.findViewById(R.id.date_started);
+        TextView dateEndetView = (TextView) holder.mView.findViewById(R.id.date_ended);
+        TextView goalView = (TextView) holder.mView.findViewById(R.id.goal);
+        TextView endingBalanceView = (TextView) holder.mView.findViewById(R.id.ending_balance);
 
-        thisChallengeWasSelected=(ImageButton) holder.mView.findViewById(R.id.info_about_challenge);
+        thisChallengeShowInfo = (ImageButton) holder.mView.findViewById(R.id.challenge_row_view_info_button);
+        thisChallengeDeleteView = (ImageButton) holder.mView.findViewById(R.id.challenge_row_view_delete_challenge);
+
 
         // Put data into view
-        String name=challengeList.get(position).getChallengeName();
-        String date=challengeList.get(position).getDateStarted();
-        String dateEnded=challengeList.get(position).getDateEnded();
-        float goal=challengeList.get(position).getChallengeGoal();
-        float endingBalance=challengeList.get(position).getEndingBalance();
+        String name = challengeList.get(position).getChallengeName();
+        String date = challengeList.get(position).getDateStarted();
+        String dateEnded = challengeList.get(position).getDateEnded();
+        float goal = challengeList.get(position).getChallengeGoal();
+        float endingBalance = challengeList.get(position).getEndingBalance();
 
         challengeName.setText(name);
-        goalView.setText(String.valueOf(goal)+"€/ Tag");
 
-        endingBalanceView.setText(String.valueOf(endingBalance)+"€");
-        if (endingBalance<0)
+        String goalFormated=String.format(floatNumberFormatPreset,goal);
+        goalView.setText(goalFormated+ "€/ Tag");
+
+        String endingBalanceFormated=String.format(floatNumberFormatPreset,endingBalance);
+        endingBalanceView.setText(endingBalanceFormated+ "€");
+        if (endingBalance < 0)
             endingBalanceView.setTextColor(Color.RED);
         else
             endingBalanceView.setTextColor(Color.GREEN);
 
-        String niceDate=UtilFormatTimeStamp.german(date,UtilFormatTimeStamp.WITH_TIME);
+        String niceDate = UtilFormatTimeStamp.fromH2DataBaseTogermanDateFormat(date, UtilFormatTimeStamp.WITH_TIME);
         dateStarted.setText(niceDate);
 
-        niceDate=UtilFormatTimeStamp.german(dateEnded,UtilFormatTimeStamp.WITH_TIME);
+        niceDate = UtilFormatTimeStamp.fromH2DataBaseTogermanDateFormat(dateEnded, UtilFormatTimeStamp.WITH_TIME);
         dateEndetView.setText(niceDate);
+
         // Listen to click events
+        // This provides the touched widgets id to the calling class via the
+        // 'challengeListItemTouched' interface
+
         // Delete row?
-        /*
-        thisChallengeWasSelected.setOnClickListener(new View.OnClickListener() {
+
+        thisChallengeDeleteView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               listAndEvalChallenges.challengesListItemTouched(position, thisChallengeWasSelected.getId());
+                listAndEvalChallenges.challengesListItemTouched(position, thisChallengeDeleteView.getId());
             }
         });
-        /*
-        includeThisLoadIntoCalculation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        thisChallengeShowInfo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean includehisLoadIntoCalculation) {
-                Log.v("Checked:"," Include checked for item "+includehisLoadIntoCalculation);
-                loadList.get(position).setIncludeIntoCalculation(includehisLoadIntoCalculation);
-                main.itemInsideLoadListWasPressed(position,includeThisLoadIntoCalculation.getId());
+            public void onClick(View view) {
+                listAndEvalChallenges.challengesListItemTouched(position, thisChallengeShowInfo.getId());
             }
+
         });
-        */
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        if(challengeList!=null)
+        if (challengeList != null)
             return challengeList.size();
         return 0;
     }

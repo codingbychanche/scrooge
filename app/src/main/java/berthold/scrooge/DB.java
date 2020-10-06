@@ -161,6 +161,7 @@ public class DB {
 	 * @return  true if the value is already a member of the DB
 	 *
 	 * todo: Add case insensitive
+	 * todo: Remove spaces (leading and ending from input...)
 	 */
 
 	public static Boolean doesExist(String table, String column, String value, Connection conn)

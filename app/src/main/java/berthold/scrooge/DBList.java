@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DBList {
@@ -59,24 +60,21 @@ public class DBList {
                 int key1 = 0;
                 String name = "-";
                 String dateStarted = "-";
-                String dateEndet="-";
+                String dateEndet = "-";
                 float goal = 0;
-                float endingBalance=0;
-                boolean done=false;
+                float endingBalance = 0;
+                boolean done = false;
 
                 if (columnCount >= 1) key1 = rs.getInt(1);
-                if (columnCount >= 2) name= rs.getString(2);
+                if (columnCount >= 2) name = rs.getString(2);
                 if (columnCount >= 3) dateStarted = rs.getString(3);
                 if (columnCount >= 4) dateEndet = rs.getString(4);
                 if (columnCount >= 5) goal = rs.getFloat(5);
                 if (columnCount >= 6) endingBalance = rs.getFloat(6);
                 if (columnCount >= 7) done = rs.getBoolean(7);
 
-
-                String niceDate = UtilFormatTimeStamp.german(dateStarted, UtilFormatTimeStamp.WITH_TIME);
-
                 // todo Debug
-                Log.v("CHALLENGES:", name + " " + dateStarted + " " + dateEndet+" "+goal+" "+endingBalance+" "+done);
+                Log.v("CHALLENGES:", name + " " + dateStarted + " " + dateEndet + " " + goal + " " + endingBalance + " " + done);
 
                 // If search query was passed, mark matching part of name....
                 Spannable markedName = new SpannableString(name);
@@ -88,7 +86,7 @@ public class DBList {
 
                 // Create list entry
                 if (done) {
-                    ChallengeData newChallenge = new ChallengeData(key1,dateStarted,dateEndet,name,goal,endingBalance,done);
+                    ChallengeData newChallenge = new ChallengeData(key1, dateStarted, dateEndet, name, goal, endingBalance, done);
                     challengeDataList.add(newChallenge);
                     challengeListAdapter.notifyDataSetChanged();
                 }
@@ -105,6 +103,40 @@ public class DBList {
                 SQLException ee) {
             Log.v(tag, "ERROR:" + ee.toString());
         }
+    }
+
+    /**
+     * Builds a list of products from the 'products' table
+     */
+    public static String[] products() {
+
+        String[] listOfProductsReturned = null;
+
+        try {
+            PreparedStatement selectPreparedStatement = null;
+            selectPreparedStatement = ActivityMain.conn.prepareStatement
+                    ("select name from products order by name DESC");
+            ResultSet rs = selectPreparedStatement.executeQuery();
+
+            int columnCount;
+            List<String> listOfProducts = new ArrayList<>();
+
+            while (rs.next()) {
+                columnCount = rs.getMetaData().getColumnCount();
+                if (columnCount == 1)
+                    listOfProducts.add(rs.getString(1));
+                else
+                    listOfProducts.add("empty");
+            }
+
+            listOfProductsReturned = new String[listOfProducts.size()];
+            listOfProducts.toArray(listOfProductsReturned);
+
+        } catch (
+                SQLException ee) {
+            Log.v("ERROR ", ee.toString());
+        }
+        return listOfProductsReturned;
     }
 
     /**
@@ -138,7 +170,7 @@ public class DBList {
                 if (columnCount >= 4) spend = rs.getFloat(4);
                 if (columnCount >= 5) bought = rs.getString(5);
 
-                String niceDate = UtilFormatTimeStamp.german(date, UtilFormatTimeStamp.WITH_TIME);
+                String niceDate = UtilFormatTimeStamp.fromH2DataBaseTogermanDateFormat(date, UtilFormatTimeStamp.WITH_TIME);
                 Log.v("DATE", date + " | " + niceDate);
                 /*
                 // If search query was passed, mark matching part of name....
