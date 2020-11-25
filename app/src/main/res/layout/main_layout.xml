@@ -22,7 +22,6 @@
         android:background="@drawable/background_gradient"
         app:layout_constraintBottom_toBottomOf="@+id/active_challenge_goal_field"
         tools:layout_editor_absoluteX="0dp">
-
     </View>
 
     <TextView
@@ -78,6 +77,15 @@
 
     <!-- Day -->
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/money_left_today_field"
+        tools:layout_editor_absoluteX="0dp"></androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/textView51"
         style="@style/ActivityTextBody"
@@ -86,13 +94,14 @@
         android:layout_marginTop="16dp"
         android:text="@string/balance_over_whole_challenge"
         app:layout_constraintStart_toStartOf="@+id/money_left_today_field"
-        app:layout_constraintTop_toBottomOf="@+id/money_left_today_field"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"></TextView>
 
     <TextView
         android:id="@+id/money_left_today_field"
         style="@style/ActivityHighlightedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
@@ -100,32 +109,62 @@
     </TextView>
 
     <TextView
-        android:id="@+id/target"
+        android:id="@+id/textView6"
+        style="@style/ActivityHighlightedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/actual_until_today"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/ActivityHighlightedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/target_until_today"
+        app:layout_constraintStart_toStartOf="@+id/textView51"
+        app:layout_constraintTop_toBottomOf="@+id/textView51" />
+
+    <TextView
+        android:id="@+id/textView7"
+        style="@style/ActivityHighlightedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/remainig"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/target"
+        style="@style/ActivityHighlightedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:hint="TargetSum"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView51"></TextView>
-
+        app:layout_constraintTop_toTopOf="@+id/textView4"></TextView>
 
     <TextView
         android:id="@+id/actual"
+        style="@style/ActivityHighlightedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:hint="ActualSum"
         app:layout_constraintEnd_toEndOf="@+id/target"
-        app:layout_constraintTop_toBottomOf="@+id/target"></TextView>
+        app:layout_constraintTop_toTopOf="@+id/textView6"></TextView>
 
     <TextView
         android:id="@+id/balance"
+        style="@style/ActivityHighlightedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:hint="Balance"
-        app:layout_constraintEnd_toEndOf="@+id/actual"
-        app:layout_constraintTop_toBottomOf="@+id/actual"></TextView>
+        app:layout_constraintStart_toStartOf="@+id/actual"
+        app:layout_constraintTop_toTopOf="@+id/textView7"></TextView>
 
     <TextView
         android:id="@+id/textView3"
@@ -142,31 +181,8 @@
         style="@style/ActivityHighlightedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/textView4"
-        style="@style/ActivityTextBody"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/add_carry"
-        app:layout_constraintStart_toStartOf="@+id/money_spend_today_field"
-        app:layout_constraintTop_toBottomOf="@+id/money_spend_today_field">
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/add_carry_field"
-        style="@style/ActivityHighlightedText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
     </TextView>
 
@@ -177,8 +193,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/money_left_today"
-        app:layout_constraintStart_toStartOf="@+id/add_carry_field"
-        app:layout_constraintTop_toBottomOf="@+id/add_carry_field">
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/money_spend_today_field">
 
     </TextView>
 
@@ -213,6 +229,15 @@
         app:backgroundTint="#015F56"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/active_challenge_goal_field"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/balance"
+        tools:layout_editor_absoluteX="8dp"></androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/list_all_closed_challenges"

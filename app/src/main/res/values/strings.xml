@@ -22,6 +22,9 @@
     <string name="add_carry">Übertrag Vortag</string>
     <string name="challenges_table_name">Abgeschlossene:</string>
     <string name="expenses_of_today">Heute gekauft....</string>
+    <string name="target_until_today">Soll bis Heute</string>
+    <string name="actual_until_today">Ist bis Heute</string>
+    <string name="remainig">Verbleibend</string>
 
     <string name="leave_warning">Die App wird verlassen, wenn Sie den Back- Button ein zweites mal drücken.
                                 Der aktuelle Stand wird gespeichrt!</string>

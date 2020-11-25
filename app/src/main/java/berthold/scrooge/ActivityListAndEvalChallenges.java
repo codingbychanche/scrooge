@@ -107,7 +107,6 @@ public class ActivityListAndEvalChallenges extends AppCompatActivity implements 
                 DBList.challenges(challengesListViewAdapter, challengesListData, "", "datestarted", "DESC");
             }
         }
-
     }
 
     /*

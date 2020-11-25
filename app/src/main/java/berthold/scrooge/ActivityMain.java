@@ -113,7 +113,7 @@ public class ActivityMain extends AppCompatActivity
 
         dateOfActiveChallenge = findViewById(R.id.date_of_active_challenge);
         moneySpendToday = findViewById(R.id.money_spend_today_field);
-        addCarryField = findViewById(R.id.add_carry_field);
+        //addCarryField = findViewById(R.id.add_carry_field);
 
         toggleMenu = findViewById(R.id.fold_unfold_menu);
 
@@ -122,8 +122,8 @@ public class ActivityMain extends AppCompatActivity
         challengeDaysRunningView = findViewById(R.id.challenge_days_running);
 
         // Anim
-        fadeInAnim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.menu_fade_in);
-        fadeOutAnim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.menu_fade_out);
+        fadeInAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.menu_fade_in);
+        fadeOutAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.menu_fade_out);
 
         // Create Database
         String dbName = "/ScroogeLedger";
@@ -217,7 +217,9 @@ public class ActivityMain extends AppCompatActivity
     @Override
     public void onResume() {
         super.onResume();
-        Log.v("LIFE ", "On Resume");
+
+        menuIsShown=false;
+        toggleMenue();
 
         timesBackPressed = 0;
         challengeDaysRunning = 1;
@@ -350,6 +352,7 @@ public class ActivityMain extends AppCompatActivity
             moneyLeftToday.setTextColor(Color.GREEN);
         moneyLeftToday.setText(moneyLeftFormeted + " €");
 
+        /*
         String carryFormated = String.format(floatNumberFormatPreset, carry);
         if (carry < 0)
             addCarryField.setTextColor(Color.RED);
@@ -357,6 +360,7 @@ public class ActivityMain extends AppCompatActivity
             addCarryField.setTextColor((Color.GREEN));
 
         addCarryField.setText(carryFormated + " €");
+         */
 
         // Show target goal until this day and actual sum of money spend...
         float actualSumOfExpenses = DBGetExpenses.totalSumOfExpenses(key1OfActiveChallenge);
@@ -370,6 +374,15 @@ public class ActivityMain extends AppCompatActivity
         float totalBalance = targetSumOfExpenses - actualSumOfExpenses;
         String totalBalanceFormated = String.format(floatNumberFormatPreset, totalBalance);
         totalBalanceView.setText(totalBalanceFormated + " €");
+
+        if (actualSumOfExpenses > targetSumOfExpenses) {
+            totalBalanceView.setTextColor(Color.RED);
+            actualForCurrentChallengeView.setTextColor(Color.RED);
+
+        } else {
+            totalBalanceView.setTextColor(Color.GREEN);
+            actualForCurrentChallengeView.setTextColor(Color.GREEN);
+        }
     }
 
     /*

@@ -79,7 +79,6 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         thisChallengeShowInfo = (ImageButton) holder.mView.findViewById(R.id.challenge_row_view_info_button);
         thisChallengeDeleteView = (ImageButton) holder.mView.findViewById(R.id.challenge_row_view_delete_challenge);
 
-
         // Put data into view
         String name = challengeList.get(position).getChallengeName();
         String date = challengeList.get(position).getDateStarted();
