@@ -452,7 +452,6 @@ public class ActivityMain extends AppCompatActivity
     /*
      * Callback, item inside expenses list was pressed....
      */
-
     public void expensesListItemInsideWasTouched(int position, int resourcheId) {
         String nameOfButtonPressed;
         nameOfButtonPressed = getResources().getResourceEntryName(resourcheId);

@@ -71,18 +71,16 @@ public class ActivityListAndEvalChallenges extends AppCompatActivity implements 
     /*
      * Callback, item inside challenges list was pressed....
      */
-
     public void challengesListItemTouched(int position, int resourcheId) {
         String nameOfButtonPressed;
         this.position=position;
         nameOfButtonPressed = getResources().getResourceEntryName(resourcheId);
-        String dialogText=getResources().getString(R.string.dialog_delete_challenges);
-        String noButton=getResources().getString(R.string.dialog_no_button);
-        String yesButton=getResources().getString(R.string.dialog_yes_button);
 
         if (nameOfButtonPressed.equals("challenge_row_view_delete_challenge")) {
+            String dialogText=getResources().getString(R.string.dialog_delete_challenges);
+            String noButton=getResources().getString(R.string.dialog_no_button);
+            String yesButton=getResources().getString(R.string.dialog_yes_button);
             showConfirmDialog(DELETE_CHALLENGE,FragmentDialogYesNo.SHOW_AS_YES_NO_DIALOG,dialogText,noButton,yesButton);
-
         }
 
         if (nameOfButtonPressed.equals("challenge_row_view_info_button")){
@@ -114,10 +112,10 @@ public class ActivityListAndEvalChallenges extends AppCompatActivity implements 
      *
      * @see FragmentDialogYesNo
      */
-
     private void showConfirmDialog(int reqCode, int kindOfDialog, String dialogText, String confirmButton, String cancelButton) {
-        // toDo remove this!
-
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentDialogYesNo confirm = FragmentDialogYesNo.newInstance(reqCode,0,0,null,dialogText,"OK","nein");
+        confirm.show(fm, "fragment_dialog_yes_no");
     }
 
 }

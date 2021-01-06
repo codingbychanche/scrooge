@@ -57,7 +57,7 @@ public class DBGetExpenses {
     /**
      * Returns the total sum of one challenge.
      */
-    public static float totalSumOfExpenses(int primaryKeyOfCahllenge) {
+    public static float totalSumOfExpenses(int primaryKeyOfChallenge) {
         int columnCount;
         float moneySpend = 0;
 
@@ -65,7 +65,7 @@ public class DBGetExpenses {
             PreparedStatement selectPreparedStatement = null;
             selectPreparedStatement =
                     ActivityMain.conn.prepareStatement
-                            ("select spend from expenses where key2=" + primaryKeyOfCahllenge);
+                            ("select spend from expenses where key2=" + primaryKeyOfChallenge);
             ResultSet rs = selectPreparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -83,7 +83,6 @@ public class DBGetExpenses {
     /**
      * Returns a list of the daily sum of expenses for each day the challenge was running.
      */
-
     public static List<DataEntry> forEachDayChallengeWasRunning(int primaryKeyOfChallenge, float goal) {
 
         List<DataEntry> waterfallData = new ArrayList<>();
@@ -127,7 +126,6 @@ public class DBGetExpenses {
                     day++;
                 }
             }
-
         } catch (SQLException ee) {
             Log.v("-", "SQL Error " + ee.toString());
         }
@@ -142,7 +140,6 @@ public class DBGetExpenses {
      * <p>
      * todo: If for the same product money was spend twice or more times, this product appears more than one time in the chart which it should not!
      */
-
     public static List<DataEntry> sumByProduct(int primaryKeyOfChallenge) {
         int columnCount;
         float moneySpend = 0;

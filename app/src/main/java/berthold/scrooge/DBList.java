@@ -86,7 +86,8 @@ public class DBList {
 
                 // Create list entry
                 if (done) {
-                    ChallengeData newChallenge = new ChallengeData(key1, dateStarted, dateEndet, name, goal, endingBalance, done);
+                    float totalMoneySpend=DBGetExpenses.totalSumOfExpenses(key1);
+                    ChallengeData newChallenge = new ChallengeData(key1, dateStarted, dateEndet, name, goal, endingBalance,totalMoneySpend, done);
                     challengeDataList.add(newChallenge);
                     challengeListAdapter.notifyDataSetChanged();
                 }

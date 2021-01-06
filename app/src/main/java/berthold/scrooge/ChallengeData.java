@@ -20,15 +20,17 @@ public class ChallengeData {
     private String challengeName;
     private float challengeGoal;
     private float endingBalance;
+    private float totalMoneySpend;
     private boolean isActive;
 
-    public ChallengeData(int key1, String dateStarted, String dateEnded, String challengeName, float challengeGoal, float endingBalance, boolean isActive) {
+    public ChallengeData(int key1, String dateStarted, String dateEnded, String challengeName, float challengeGoal, float endingBalance, float totalMoneySpend,boolean isActive) {
         this.key1 = key1;
         this.dateStarted = dateStarted;
         this.dateEnded = dateEnded;
         this.challengeName = challengeName;
         this.challengeGoal = challengeGoal;
         this.endingBalance = endingBalance;
+        this.totalMoneySpend=totalMoneySpend;
         this.isActive = isActive;
     }
 
@@ -55,6 +57,8 @@ public class ChallengeData {
     public float getEndingBalance() {
         return endingBalance;
     }
+
+    public float getTotalMoneySpend(){return totalMoneySpend;}
 
     public boolean isActive() {
         return isActive;

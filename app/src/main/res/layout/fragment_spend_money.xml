@@ -58,53 +58,33 @@
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:hint="@string/amount_of_money_spend_hint"
-        android:layout_marginTop="8dp"
-        android:drawableLeft="@android:drawable/ic_menu_day"
         android:inputType="numberDecimal"
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/spend_for"
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
-        android:hint="@string/category_money_spend_for"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:drawableLeft="@android:drawable/btn_star_big_off"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/category_money_spend_for"
         android:inputType="textCapWords"
+        android:dropDownAnchor="@id/textView10"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
-        android:id="@+id/textView8"
-        style="@style/DialogBoxTextBody"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/new_expense_fragment_explain"
-
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"></TextView>
-
-    <ListView
-        android:id="@+id/product_list"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginBottom="24dp"
-        android:background="#55A0A0A0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spend_for"></ListView>
-
-
-    <TextView
         android:id="@+id/textView10"
         style="@style/DialogBoxStyleTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/new_expense_fragment_titel"
         app:layout_constraintStart_toStartOf="parent"

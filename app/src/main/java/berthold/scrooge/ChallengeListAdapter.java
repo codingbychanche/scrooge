@@ -21,6 +21,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +77,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         TextView dateEndetView = (TextView) holder.mView.findViewById(R.id.date_ended);
         TextView goalView = (TextView) holder.mView.findViewById(R.id.goal);
         TextView endingBalanceView = (TextView) holder.mView.findViewById(R.id.ending_balance);
+        TextView thisChallengeTotalMoneySpend=(TextView)holder.mView.findViewById(R.id.this_challenge_total_money_spend);
 
         thisChallengeShowInfo = (ImageButton) holder.mView.findViewById(R.id.challenge_row_view_info_button);
         thisChallengeDeleteView = (ImageButton) holder.mView.findViewById(R.id.challenge_row_view_delete_challenge);
@@ -85,6 +88,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         String dateEnded = challengeList.get(position).getDateEnded();
         float goal = challengeList.get(position).getChallengeGoal();
         float endingBalance = challengeList.get(position).getEndingBalance();
+        float totalMoneySpend=challengeList.get(position).getTotalMoneySpend();
 
         challengeName.setText(name);
 
@@ -98,6 +102,9 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         else
             endingBalanceView.setTextColor(Color.GREEN);
 
+        String totalMoneySpendFormated=String.format(floatNumberFormatPreset,totalMoneySpend);
+        thisChallengeTotalMoneySpend.setText(totalMoneySpendFormated+ "€");
+
         String niceDate = UtilFormatTimeStamp.fromH2DataBaseTogermanDateFormat(date, UtilFormatTimeStamp.WITH_TIME);
         dateStarted.setText(niceDate);
 
@@ -109,7 +116,6 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         // 'challengeListItemTouched' interface
 
         // Delete row?
-
         thisChallengeDeleteView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -59,6 +59,7 @@
     <string name="date_ended">Beendet:</string>
     <string name="goal">Tageslimit</string>
     <string name="ending_balance">Abschluss</string>
+    <string name="total_amount_spend">Gesammtausgaben</string>
 
     <!-- Challenges Info -->
     <string name="activity_challenge_info_total_text">Insgesammt ausgegeben:</string>

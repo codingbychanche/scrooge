@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,7 +32,7 @@ public class FragmentSpendMoney extends DialogFragment {
 
     // Fragments UI components
     EditText moneySpend;
-    EditText moneySpendFor;
+    AutoCompleteTextView moneySpendFor;
     Button okButton;
     Button cancelButton;
 
@@ -80,20 +81,44 @@ public class FragmentSpendMoney extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // These are the fragments UI components
-        // Gets all objects (Buttons, EditText etc..) and set's them on
-        // their listeners.....
         moneySpend = (EditText) view.findViewById(R.id.name);
-        moneySpendFor = (EditText) view.findViewById(R.id.spend_for);
 
+        // @rem:Shows how an autoCompleteTextView works@@
+        final String[] productsAlreadyPurchased = DBList.products();
+        ArrayAdapter<String> productsAlreadyPurchasedAdapter =
+                new ArrayAdapter<String>(getActivity(), R.layout.simple_list_row, R.id.text1, productsAlreadyPurchased);
 
-        // Fill product list
-        ListView itemListView = (ListView) view.findViewById(R.id.product_list);
-        final String[] values = DBList.products();
+        moneySpendFor = (AutoCompleteTextView) view.findViewById(R.id.spend_for);
+        moneySpendFor.setAdapter(productsAlreadyPurchasedAdapter);
+        moneySpendFor.setThreshold(1); // Autocomplete starts with the first character entered....
+        //@@
 
-        ArrayAdapter<String> itemListAdapter =
-                new ArrayAdapter<String>(getActivity(), R.layout.simple_list_row, R.id.text1, values);
-        itemListView.setAdapter(itemListAdapter);
+        // When Ok Button is pressed, finish fragment and return text....
+        okButton = (Button) view.findViewById(R.id.ok_button);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // When the button is pressed, pass entered text via the interface
+                // to the activity which started this fragment.
+                //
+                // The calling activity must implement this fragments interface!
+                DBInsertInto.products(moneySpendFor.getText().toString());
+
+                gf.expensesGetDataFromFragment(moneySpend.getText().toString(), moneySpendFor.getText().toString(), "OK");
+                dismiss();
+            }
+        });
+
+        // Cancel button was pressed
+        cancelButton = (Button) view.findViewById(R.id.cancel_button);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gf.expensesGetDataFromFragment("-", "-", "CANCEL");
+                dismiss();
+            }
+        });
 
         /*
          * @rem:RadioButtonGroup, selectable list of items...@@
@@ -131,62 +156,5 @@ public class FragmentSpendMoney extends DialogFragment {
             Log.v("LIST ", "" + id);
         }
         */
-
-        // When item inside list was pressed...
-        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
-                Log.v("FRAGMENT_ITEM", "" + position);
-                moneySpendFor.setText(values[position]);
-            }
-        };
-        itemListView.setOnItemClickListener(listener);
-
-        // When Ok Button is pressed, finish fragment and return text....
-        okButton = (Button) view.findViewById(R.id.ok_button);
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // When the button is pressed, pass entered text via the interface
-                // to the activity which started this fragment.
-                //
-                // The caling activity must implement this fragments interface!
-
-
-                DBInsertInto.products(moneySpendFor.getText().toString());
-
-
-                gf.expensesGetDataFromFragment(moneySpend.getText().toString(), moneySpendFor.getText().toString(), "OK");
-                dismiss();
-            }
-        });
-
-        // Cancel button was pressed
-        cancelButton = (Button) view.findViewById(R.id.cancel_button);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gf.expensesGetDataFromFragment("-", "-", "CANCEL");
-                dismiss();
-            }
-        });
-    }
-
-    /**
-     * Fills the list with data
-     * <p>
-     * todo Replace by database query!
-     */
-    private String[] getValues() {
-
-        String[] values = new String[]{"Berthold",
-                "Donald",
-                "Fuck",
-                "Another Fuck",
-                "Shit",
-                "Damit",
-                "End"};
-        return values;
     }
 }
