@@ -52,9 +52,9 @@ public class FragmentDialogYesNo extends DialogFragment {
     // If you need a confirm dialog + editText pass 'SHOW_WITH_EDIT_TEXT+SHOW_CONFIRM_DIALOG'
 
     private int options;
-    public static final int SHOW_AS_YES_NO_DIALOG=0;    // Show Text and two buttons (confirm/ cancel)
-    public static final int SHOW_WITH_EDIT_TEXT=1;      // Allow text input
-    public static final int SHOW_CONFIRM_DIALOG=2;      // Dispaly only one confirm button
+    public static final int SHOW_AS_YES_NO_DIALOG=1;    // Show Text and two buttons (confirm/ cancel)
+    public static final int SHOW_WITH_EDIT_TEXT=2;      // Allow text input
+    public static final int SHOW_CONFIRM_DIALOG=3;      // Dispaly only one confirm button
 
     // Return parameters
     public static final String BUTTON_OK_PRESSED="OK";

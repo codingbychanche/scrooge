@@ -29,17 +29,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"></View>
 
-    <ImageView
-        android:id="@+id/evaluation_symbol"
+    <ImageButton
+        android:id="@+id/export_this_challenge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_compass"
+        android:background="#00FFFFFF"
+        android:src="@android:drawable/ic_menu_save"
         app:layout_constraintBottom_toBottomOf="@+id/challenge_name"
         app:layout_constraintEnd_toStartOf="@+id/challenge_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/challenge_name">
 
-    </ImageView>
+    </ImageButton>
 
     <ImageButton
         android:id="@+id/challenge_row_view_info_button"

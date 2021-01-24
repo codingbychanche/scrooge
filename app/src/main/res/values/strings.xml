@@ -64,4 +64,11 @@
     <!-- Challenges Info -->
     <string name="activity_challenge_info_total_text">Insgesammt ausgegeben:</string>
 
+    <!-- Confirm Dialog for CSV-export -->
+    <string name="confirm_dialog_overwrite">Möchten Sie die folgende Datei überschreiben?</string>
+    <string name="confirm_dialog_save_at">Möchten Sie die CSV- Tabelle hier speichern?</string>
+    <string name="confirm_overwrite">Datei ersetzen</string>
+    <string name="confirm_save_at">Datei speichern</string>
+    <string name="cancel_save">Nicht speichern</string>
+
 </resources>

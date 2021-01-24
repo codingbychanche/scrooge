@@ -13,6 +13,7 @@ package berthold.scrooge;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,7 +35,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
     private static String floatNumberFormatPreset = "%.2f";
 
     // Ui
-    private ImageButton thisChallengeDeleteView, thisChallengeShowInfo;
+    private ImageButton thisCallengeExport,thisChallengeDeleteView, thisChallengeShowInfo;
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public ChallengeListAdapter(List<ChallengeData> challengeList, ActivityListAndEvalChallenges listAndEvalChallenges) {
@@ -79,6 +80,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         TextView endingBalanceView = (TextView) holder.mView.findViewById(R.id.ending_balance);
         TextView thisChallengeTotalMoneySpend=(TextView)holder.mView.findViewById(R.id.this_challenge_total_money_spend);
 
+        thisCallengeExport=(ImageButton) holder.mView.findViewById(R.id.export_this_challenge);
         thisChallengeShowInfo = (ImageButton) holder.mView.findViewById(R.id.challenge_row_view_info_button);
         thisChallengeDeleteView = (ImageButton) holder.mView.findViewById(R.id.challenge_row_view_delete_challenge);
 
@@ -114,6 +116,17 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         // Listen to click events
         // This provides the touched widgets id to the calling class via the
         // 'challengeListItemTouched' interface
+
+        // Export something?
+        thisCallengeExport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(v.getContext(), ActivityExportData.class);
+                in.putExtra("keyOfChallengeToExport",challengeList.get(position).getKey1());
+
+                v.getContext().startActivity(in);
+            }
+        });
 
         // Delete row?
         thisChallengeDeleteView.setOnClickListener(new View.OnClickListener() {
