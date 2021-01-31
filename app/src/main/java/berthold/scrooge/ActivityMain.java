@@ -1,18 +1,5 @@
 package berthold.scrooge;
 
-/*
- * ActivityMain.java
- *
- * Created by Berthold Fritz
- *
- * This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License:
- * https://creativecommons.org/licenses/by-nc-sa/4.0/
- *
- * Last modified 9/30/19 1:59 PM
- */
-
-// todo When a new system date is set, carry is set for new day. If a "true" day ends, not!
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

@@ -39,7 +39,6 @@
         app:layout_constraintEnd_toStartOf="@+id/challenge_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/challenge_name">
-
     </ImageButton>
 
     <ImageButton

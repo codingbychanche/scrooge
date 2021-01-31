@@ -121,10 +121,7 @@ public class ChallengeListAdapter extends RecyclerView.Adapter<ChallengeListAdap
         thisCallengeExport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(v.getContext(), ActivityExportData.class);
-                in.putExtra("keyOfChallengeToExport",challengeList.get(position).getKey1());
-
-                v.getContext().startActivity(in);
+                listAndEvalChallenges.challengesListItemTouched(position, thisCallengeExport.getId());
             }
         });
 

@@ -65,7 +65,6 @@ public class DB {
 	 * 			"empty" if no matching pattern could be found
 	 * 
 	 */
-	
 	public static StringBuffer sqlRequest(String sqlString, Connection conn)
 	{
 		StringBuffer result=new StringBuffer();
@@ -104,7 +103,6 @@ public class DB {
 	 * @param 	conn		DB- connection
 	 *
 	 */
-
 	public static void insert(String sql, Connection conn)
 	{
 		try {

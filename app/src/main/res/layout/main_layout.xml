@@ -41,6 +41,8 @@
         style="@style/ActivityTitelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:hint="Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
@@ -76,7 +78,6 @@
     </TextView>
 
     <!-- Day -->
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -164,7 +165,6 @@
         android:layout_height="wrap_content"
         android:hint="Balance"
         app:layout_constraintEnd_toEndOf="@+id/actual"
-        app:layout_constraintStart_toStartOf="@+id/actual"
         app:layout_constraintTop_toTopOf="@+id/textView7"></TextView>
 
     <TextView

@@ -201,6 +201,5 @@ public class DBList {
                 SQLException ee) {
             Log.v(tag, "ERROR:" + ee.toString());
         }
-
     }
 }

@@ -14,7 +14,6 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!-- Activity's -->
@@ -23,7 +22,6 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:paddingBottom">10dp</item>
-        <item name="android:layout_marginStart">8dp</item>
     </style>
 
     <style name="ActivityHighlightedText" parent="TextAppearance.AppCompat">
@@ -31,7 +29,6 @@
     </style>
 
     <style name="ActivityTextBody" parent="TextAppearance.AppCompat">
-
         <item name="android:textSize">15dp</item>
     </style>
 
@@ -51,7 +48,6 @@
     </style>
 
     <!-- Table rows -->
-
     <style name="TableRowsTitel" parent="TextAppearance.AppCompat">
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
@@ -67,6 +63,4 @@
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:textSize">10dp</item>
     </style>
-
-
 </resources>

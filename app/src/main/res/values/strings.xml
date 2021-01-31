@@ -54,6 +54,10 @@
     <string name="dialog_no_button">Löschen!</string>
     <string name="challenges_delete_dialog">Herausforderung Löschen?</string>
 
+    <!-- CSV export -->
+    <string name="export_activity_titel">CSV- Export</string>
+    <string name="export_csv_selection_text">CSV- Trennzeichen</string>
+
     <!-- Challenges row view -->
     <string name="date_started">Angefangen:</string>
     <string name="date_ended">Beendet:</string>

@@ -75,6 +75,7 @@ public class ActivityListAndEvalChallenges extends AppCompatActivity implements 
         String nameOfButtonPressed;
         this.position=position;
         nameOfButtonPressed = getResources().getResourceEntryName(resourcheId);
+        Log.v("NAME",nameOfButtonPressed);
 
         if (nameOfButtonPressed.equals("challenge_row_view_delete_challenge")) {
             String dialogText=getResources().getString(R.string.dialog_delete_challenges);
@@ -86,6 +87,12 @@ public class ActivityListAndEvalChallenges extends AppCompatActivity implements 
         if (nameOfButtonPressed.equals("challenge_row_view_info_button")){
             Intent in = new Intent(getApplicationContext(), ActivityChallengeInfo.class);
             in.putExtra("key1OfChallengeSelected",challengesListData.get(position).getKey1());
+            startActivity(in);
+        }
+
+        if (nameOfButtonPressed.equals("export_this_challenge")){
+            Intent in = new Intent(this, ActivityExportData.class);
+            in.putExtra("keyOfChallengeToExport",challengesListData.get(position).getKey1());
             startActivity(in);
         }
     }

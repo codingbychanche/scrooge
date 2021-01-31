@@ -11,9 +11,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.io.File;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import berthold.filedialogtool.FileDialog;
 
@@ -26,6 +32,7 @@ public class ActivityExportData extends AppCompatActivity implements FragmentDia
     ImageButton saveCsvLocally;
     ImageButton sendByMail;
     EditText csvSepparator;
+    TextView csvTableText;
     ProgressBar pBar;
 
     // Req codes
@@ -51,12 +58,29 @@ public class ActivityExportData extends AppCompatActivity implements FragmentDia
 
         Bundle extra = getIntent().getExtras();
         keyOfChallengeToExport = extra.getInt("keyOfChallengeToExport", 0);
+        Log.v("KEY:",keyOfChallengeToExport+"");
 
         // UI
         saveCsvLocally = (ImageButton) findViewById(R.id.save_csv_localy);
         sendByMail = (ImageButton) findViewById(R.id.export_csv_by_mail);
         csvSepparator = (EditText) findViewById(R.id.csv_separator);
+        csvTableText=(TextView)findViewById(R.id.csv_table_text);
         pBar = (ProgressBar) findViewById(R.id.progress);
+
+        TextView nameOfChallengeView=(TextView)findViewById(R.id.name_of_chalenge_to_export);
+        String challengeName=DBGetChallenge.name(keyOfChallengeToExport);
+        Log.v("NAME",challengeName);
+        nameOfChallengeView.setText(challengeName);
+
+        FloatingActionButton fab = findViewById(R.id.close_export);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        csvTableText.setText(createCsvString());
 
         // Actions
         saveCsvLocally.setOnClickListener(new View.OnClickListener() {
@@ -73,12 +97,12 @@ public class ActivityExportData extends AppCompatActivity implements FragmentDia
         sendByMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String csvTable=tableToCsv(csvSepparator.getText().toString());
+                String csvTable= createCsvString();
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setData(Uri.parse("mailto:"));
                 emailIntent.setType("text/plain");
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "FunWithRegex: Take this :-)");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "-");
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Scrooge Export...");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, csvTable);
                 startActivity(Intent.createChooser(emailIntent, "Send email..."));
             }
         });
@@ -144,13 +168,13 @@ public class ActivityExportData extends AppCompatActivity implements FragmentDia
             if (buttonPressed.equals(FragmentDialogYesNo.BUTTON_OK_PRESSED)) {
 
                 // If filename does not exist, save file....
-                if (!f.exists())
-                    saveCsv(path + "/" + filename);
+                if (!f.exists()){}
+                    //createCsvString(path + "/" + filename);
                 else {
                     // ... If filename exists, append '_NEW' to filename. Do not overwrite
                     // existing file.
                     String newFilename = filename + "_NEW";
-                    saveCsv(path + "/" + newFilename);
+                    //createCsvString(path + "/" + newFilename);
                     Toast.makeText(getApplicationContext(), "Die Datei " + filename + " gibt es schon. Neue Datei unter " + newFilename + " abgelegt.", Toast.LENGTH_LONG).show();
                 }
 
@@ -160,7 +184,7 @@ public class ActivityExportData extends AppCompatActivity implements FragmentDia
         }
         // If file was picked, overwrite
         if (reqCode == CONFIRM_CSV_OVERWRITE) {
-            saveCsv(path);
+            //createCsvString(path);
         }
         SHOW_CONFIRM_OVERWRITE = false;
         SHOW_CONFIRM_SAVE_AT = false;
@@ -210,12 +234,35 @@ public class ActivityExportData extends AppCompatActivity implements FragmentDia
     }
 
     /*
-     * Save CSV
+     * Creates a csv table
      */
-    private void saveCsv(String path) {
+    private String createCsvString() {
+
+        StringBuilder csvTable=new StringBuilder();
+        String seperator=csvSepparator.getText().toString();
+
+        try {
+            PreparedStatement selectPreparedStatement = null;
+            selectPreparedStatement = ActivityMain.conn.prepareStatement("select date,bought,spend from expenses where key2="+keyOfChallengeToExport);
+            ResultSet rs = selectPreparedStatement.executeQuery();
+
+            while(rs.next()){
+                csvTable.append (rs.getString(1)+seperator);
+                csvTable.append (rs.getString(2)+seperator);
+                csvTable.append (rs.getString(3));
+                csvTable.append("\n");
+            }
+            System.out.println(csvTable.toString());
+        }catch (SQLException e){
+            Log.v("CSV export error:",e.toString());
+        }
+        return csvTable.toString();
+
+        /*
         //String csvTable=tableToCsv(csvSepparator.getText().toString());
         if (saveFile != null) saveFile.cancel(true);
         saveFile = new SaveFile("-", getApplicationContext(), pBar, path);
         saveFile.execute();
+        */
     }
 }
